@@ -6,7 +6,7 @@ plugins {
 apply(from = "$rootDir/compose-module.gradle")
 
 android {
-    namespace = "com.landmuc.questionnaire_presentation"
+    namespace = "com.landmuc.core_ui"
 }
 
 dependencies {

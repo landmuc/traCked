@@ -11,8 +11,8 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")
-    implementation("com.android.tools.build:gradle:8.2.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
+    implementation("com.android.tools.build:gradle:8.1.1")
     // Required to fix a missing dependency error
     implementation("com.squareup:javapoet:1.13.0")
 }
@@ -20,5 +20,5 @@ dependencies {
 
 val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "18"
 }
