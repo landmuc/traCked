@@ -30,7 +30,7 @@ fun UnitTextField(
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
         Text(
             text = unit,
-            style = MaterialTheme.typography.displaySmall
+            style = MaterialTheme.typography.displayMedium
             )
     }
 }
