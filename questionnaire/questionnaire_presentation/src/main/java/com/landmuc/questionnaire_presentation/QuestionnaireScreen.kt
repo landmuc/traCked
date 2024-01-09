@@ -7,15 +7,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.landmuc.core_ui.LocalSpacing
 import com.landmuc.questionnaire_presentation.components.ButtonQuestion
 import com.landmuc.questionnaire_presentation.components.TextQuestion
 import com.landmuc.core.R
+import com.landmuc.questionnaire_presentation.components.TextQuestionThreeAnswers
+import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
-fun QuestionnaireScreen() {
+fun QuestionnaireScreen(
+    modifier: Modifier = Modifier
+) {
     val spacing = LocalSpacing.current
   Scaffold(
       topBar = {
@@ -24,7 +29,8 @@ fun QuestionnaireScreen() {
   ) {
       LazyColumn(
           contentPadding = it,
-          modifier = Modifier
+          horizontalAlignment = Alignment.CenterHorizontally,
+          modifier = modifier
               .fillMaxSize()
               .padding(bottom = spacing.spaceMedium)
       ) {
@@ -33,14 +39,14 @@ fun QuestionnaireScreen() {
                   questionText = stringResource(id = R.string.whats_your_name),
                   text = "",
                   onValueChange = {},
-                  unit = ""
+                  unit = "    "
               )
               Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
               TextQuestion(
                   questionText = stringResource(id = R.string.whats_your_age),
                   text = "",
                   onValueChange = {},
-                  unit = ""
+                  unit = stringResource(id = R.string.years)
               )
               Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
               TextQuestion(
@@ -54,14 +60,14 @@ fun QuestionnaireScreen() {
                   questionText = stringResource(id = R.string.whats_your_height),
                   text = "",
                   onValueChange = {},
-                  unit = ""
+                  unit = stringResource(id = R.string.cm)
               )
               Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
               TextQuestion(
                   questionText = stringResource(id = R.string.whats_your_weight),
                   text = "",
                   onValueChange = {},
-                  unit = ""
+                  unit = stringResource(id = R.string.kg)
               )
               Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
               ButtonQuestion(
@@ -83,7 +89,17 @@ fun QuestionnaireScreen() {
                   middleButtonOnClick = { /*TODO*/ },
                   rightButtonOnClick = { /*TODO*/ }
               )
-              //NutrientGoal
+              Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
+              TextQuestionThreeAnswers(
+                  questionText = stringResource(id = R.string.what_are_your_nutrient_goals),
+                  LeftInputText = "Hello",
+                  MiddleInputText = "Hello2",
+                  RightInputText = "Hello3",
+                  LeftOnValueChange = {},
+                  MiddleOnValueChange = {},
+                  RightOnValueChange = {},
+                  unit = stringResource(id = R.string.percent_fats)
+              )
           }
       }
   }

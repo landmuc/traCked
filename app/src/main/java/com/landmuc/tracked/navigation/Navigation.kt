@@ -11,6 +11,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.landmuc.questionnaire_presentation.QuestionnaireScreen
+import com.landmuc.questionnaire_presentation.activity_and_goal.ActivityAndGoalScreen
+import com.landmuc.questionnaire_presentation.nutrient_goal.NutrientGoalScreen
+import com.landmuc.questionnaire_presentation.personal_info.PersonalInfoScreen
 
 @Composable
 fun Navigation() {
@@ -23,11 +26,17 @@ fun Navigation() {
     ) {
         NavHost(
             navController = navController,
-            startDestination = Route.QUESTIONNAIRE,
+            startDestination = Route.PERSONALINFO,
             modifier = Modifier.padding(it)
         ) {
-            composable(route = Route.QUESTIONNAIRE) {
-                QuestionnaireScreen()
+            composable(route = Route.PERSONALINFO) {
+                PersonalInfoScreen()
+            }
+            composable(route = Route.ACTIVITYANDGOAL) {
+                ActivityAndGoalScreen()
+            }
+            composable(route = Route.NUTRIENTGOAL) {
+                NutrientGoalScreen()
             }
         }
     }
