@@ -18,6 +18,7 @@ import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
 fun PersonalInfoScreen(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
@@ -73,7 +74,7 @@ fun PersonalInfoScreen(
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 ActionButton(
                     text = stringResource(id = R.string.next),
-                    onClick = { /*TODO*/ }
+                    onClick = onClick
                 )
             }
         }

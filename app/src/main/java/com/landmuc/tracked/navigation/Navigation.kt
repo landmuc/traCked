@@ -30,7 +30,7 @@ fun Navigation() {
             modifier = Modifier.padding(it)
         ) {
             composable(route = Route.PERSONALINFO) {
-                PersonalInfoScreen()
+                PersonalInfoScreen(onClick = { navController.navigate(Route.ACTIVITYANDGOAL) })
             }
             composable(route = Route.ACTIVITYANDGOAL) {
                 ActivityAndGoalScreen()
