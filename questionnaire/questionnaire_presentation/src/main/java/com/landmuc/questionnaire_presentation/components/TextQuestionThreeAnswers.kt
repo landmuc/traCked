@@ -16,12 +16,12 @@ import com.landmuc.core_ui.LocalSpacing
 @Composable
 fun TextQuestionThreeAnswers(
     questionText: String,
-    LeftInputText: String,
-    MiddleInputText: String,
-    RightInputText: String,
-    LeftOnValueChange: (String) -> Unit,
-    MiddleOnValueChange: (String) -> Unit,
-    RightOnValueChange: (String) -> Unit,
+    leftInputText: String,
+    middleInputText: String,
+    rightInputText: String,
+    leftOnValueChange: (String) -> Unit,
+    middleOnValueChange: (String) -> Unit,
+    rightOnValueChange: (String) -> Unit,
     unit: String,
     modifier: Modifier = Modifier
 ) {
@@ -33,7 +33,7 @@ fun TextQuestionThreeAnswers(
     ) {
         Text(
             text = questionText,
-            style = MaterialTheme.typography.displayMedium
+            style = MaterialTheme.typography.displayLarge
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         Column(
@@ -41,18 +41,18 @@ fun TextQuestionThreeAnswers(
             modifier = Modifier.fillMaxWidth()
         ) {
             UnitTextField(
-                text = LeftInputText,
-                onValueChange = LeftOnValueChange,
+                text = leftInputText,
+                onValueChange = leftOnValueChange,
                 unit = unit
             )
             UnitTextField(
-                text = MiddleInputText,
-                onValueChange = MiddleOnValueChange,
+                text = middleInputText,
+                onValueChange = middleOnValueChange,
                 unit = unit
             )
             UnitTextField(
-                text = RightInputText,
-                onValueChange = RightOnValueChange,
+                text = rightInputText,
+                onValueChange = rightOnValueChange,
                 unit = unit
             )
         }

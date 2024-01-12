@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.OutlinedTextField
@@ -12,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.unit.dp
 import com.landmuc.core_ui.LocalSpacing
 
 @Composable
@@ -29,16 +31,16 @@ fun UnitTextField(
         OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
-            textStyle = MaterialTheme.typography.displayMedium,
+            textStyle = MaterialTheme.typography.displayLarge,
             singleLine = true,
             modifier = Modifier
-                .width(IntrinsicSize.Min)
+                .width(200.dp)
                 .alignBy(LastBaseline)
         )
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
         Text(
             text = unit,
-            style = MaterialTheme.typography.displayMedium,
+            style = MaterialTheme.typography.displayLarge,
             modifier = Modifier
                 .alignBy(LastBaseline)
             )

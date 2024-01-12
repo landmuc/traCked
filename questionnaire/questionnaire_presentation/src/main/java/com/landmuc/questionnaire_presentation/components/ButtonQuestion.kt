@@ -30,7 +30,7 @@ fun ButtonQuestion(
     ) {
         Text(
             text = questionText,
-            style = MaterialTheme.typography.displayMedium
+            style = MaterialTheme.typography.displayLarge
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         Row {
@@ -38,22 +38,22 @@ fun ButtonQuestion(
                 text = leftButtonText,
                 onClick = leftButtonOnClick,
                 isSelected = false,
-                color = Color.Green,
-                selectedColor = Color.Green
+                color = MaterialTheme.colorScheme.primaryContainer,
+                selectedTextColor = Color.White
             )
             SelectableButton(
                 text = middleButtonText,
                 onClick = middleButtonOnClick,
                 isSelected = false,
-                color = Color.Green,
-                selectedColor = Color.Green
+                color = MaterialTheme.colorScheme.primaryContainer,
+                selectedTextColor = Color.White
             )
             SelectableButton(
                 text = rightButtonText,
                 onClick = rightButtonOnClick,
                 isSelected = false,
-                color = Color.Green,
-                selectedColor = Color.Green
+                color = MaterialTheme.colorScheme.primaryContainer,
+                selectedTextColor = Color.White
             )
         }
     }

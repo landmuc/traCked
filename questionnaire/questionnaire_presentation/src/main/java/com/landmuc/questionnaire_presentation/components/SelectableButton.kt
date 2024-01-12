@@ -23,9 +23,9 @@ fun SelectableButton(
     onClick: () -> Unit,
     isSelected: Boolean,
     color: Color,
-    selectedColor: Color,
+    selectedTextColor: Color,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.displayMedium
+    textStyle: TextStyle = MaterialTheme.typography.displayLarge
 ) {
     val spacing = LocalSpacing.current
     Box(
@@ -34,11 +34,11 @@ fun SelectableButton(
             .clip(RoundedCornerShape(100.dp))
             .border(
                 width = 2.dp,
-                color = if (isSelected) selectedColor else color,
+                color = color,
                 shape = RoundedCornerShape(100.dp)
             )
             .background(
-                color = if (isSelected) selectedColor else color,
+                color = if (isSelected) color else Color.Transparent,
                 shape = RoundedCornerShape(100.dp)
             )
             .padding(spacing.spaceMedium),
@@ -46,7 +46,7 @@ fun SelectableButton(
     ) {
         Text(
             text = text,
-            color = if (isSelected) selectedColor else color,
+            color = if (isSelected) selectedTextColor else color,
             style = textStyle
         )
     }

@@ -10,7 +10,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.landmuc.questionnaire_presentation.QuestionnaireScreen
 import com.landmuc.questionnaire_presentation.activity_and_goal.ActivityAndGoalScreen
 import com.landmuc.questionnaire_presentation.nutrient_goal.NutrientGoalScreen
 import com.landmuc.questionnaire_presentation.personal_info.PersonalInfoScreen

@@ -33,12 +33,12 @@ fun NutrientGoalScreen(
        ) {
            TextQuestionThreeAnswers(
                questionText = stringResource(id = R.string.what_are_your_nutrient_goals),
-               LeftInputText = "Hello",
-               MiddleInputText = "Hello2",
-               RightInputText = "Hello3",
-               LeftOnValueChange = {},
-               MiddleOnValueChange = {},
-               RightOnValueChange = {},
+               leftInputText = "Hello",
+               middleInputText = "Hello2",
+               rightInputText = "Hello3",
+               leftOnValueChange = {},
+               middleOnValueChange = {},
+               rightOnValueChange = {},
                unit = stringResource(id = R.string.percent_fats)
            )
            Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))

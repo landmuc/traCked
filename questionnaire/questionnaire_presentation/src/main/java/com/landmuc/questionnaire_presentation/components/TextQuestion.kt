@@ -27,7 +27,7 @@ fun TextQuestion(
     ) {
         Text(
             text = questionText,
-            style = MaterialTheme.typography.displayMedium
+            style = MaterialTheme.typography.displayLarge
         )
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
         UnitTextField(
