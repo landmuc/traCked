@@ -1,6 +1,6 @@
 package com.landmuc.core.domain.model
 
-sealed class GoalType(goalType: String) {
+sealed class GoalType(val goalType: String) {
     object LoseWeight: GoalType("lose_weight")
     object KeepWeight: GoalType("keep_weight")
     object GainWeight: GoalType("gain_weight")

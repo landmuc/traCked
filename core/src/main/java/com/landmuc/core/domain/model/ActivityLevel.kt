@@ -1,6 +1,6 @@
 package com.landmuc.core.domain.model
 
-sealed class ActivityLevel(activity: String) {
+sealed class ActivityLevel(val activity: String) {
     object Low: ActivityLevel("low")
     object Medium: ActivityLevel("medium")
     object High: ActivityLevel("high")
