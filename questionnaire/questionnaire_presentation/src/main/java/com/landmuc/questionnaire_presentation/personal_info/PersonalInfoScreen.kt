@@ -6,16 +6,21 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.landmuc.core_ui.LocalSpacing
 import com.landmuc.questionnaire_presentation.components.TextQuestion
@@ -27,7 +32,7 @@ import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
 fun PersonalInfoScreen(
-    onClick: () -> Unit,
+    onClickNext: () -> Unit,
     viewModel: PersonalInfoViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
@@ -57,21 +62,24 @@ fun PersonalInfoScreen(
                     questionText = stringResource(id = R.string.whats_your_age),
                     text = viewModel.personalInfoUiState.age,
                     onValueChange = { viewModel.onEvent(PersonalInfoEvent.OnAgeEnter(it)) },
-                    unit = stringResource(id = R.string.years)
+                    unit = stringResource(id = R.string.years),
+                    keyboardType = KeyboardType.Number
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 TextQuestion(
                     questionText = stringResource(id = R.string.whats_your_height),
                     text = viewModel.personalInfoUiState.height,
                     onValueChange = { viewModel.onEvent(PersonalInfoEvent.OnHeightEnter(it))},
-                    unit = stringResource(id = R.string.cm)
+                    unit = stringResource(id = R.string.cm),
+                    keyboardType = KeyboardType.Number
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 TextQuestion(
                     questionText = stringResource(id = R.string.whats_your_weight),
                     text = viewModel.personalInfoUiState.weight,
                     onValueChange = { viewModel.onEvent(PersonalInfoEvent.OnWeightEnter(it))},
-                    unit = stringResource(id = R.string.kg)
+                    unit = stringResource(id = R.string.kg),
+                    keyboardType = KeyboardType.Number
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 Column(
@@ -104,8 +112,9 @@ fun PersonalInfoScreen(
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 ActionButton(
                     text = stringResource(id = R.string.next),
-                    onClick = onClick
+                    onClick = onClickNext
                 )
+                Spacer(modifier = Modifier.size(300.dp))
             }
         }
     }

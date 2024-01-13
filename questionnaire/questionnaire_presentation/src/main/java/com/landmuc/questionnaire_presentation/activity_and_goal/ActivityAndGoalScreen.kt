@@ -1,5 +1,6 @@
 package com.landmuc.questionnaire_presentation.activity_and_goal
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -18,6 +19,8 @@ import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
 fun ActivityAndGoalScreen(
+    onClickBack: () -> Unit,
+    onClickNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
@@ -57,10 +60,16 @@ fun ActivityAndGoalScreen(
                     rightButtonOnClick = { /*TODO*/ }
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
-                ActionButton(
-                    text = stringResource(id = R.string.next),
-                    onClick = { /*TODO*/ }
-                )
+                Row {
+                    ActionButton(
+                        text = stringResource(id = R.string.back),
+                        onClick = onClickBack
+                    )
+                    ActionButton(
+                        text = stringResource(id = R.string.next),
+                        onClick = onClickNext
+                    )
+                }
             }
         }
     }

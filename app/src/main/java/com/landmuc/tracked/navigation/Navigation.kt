@@ -29,10 +29,15 @@ fun Navigation() {
             modifier = Modifier.padding(it)
         ) {
             composable(route = Route.PERSONALINFO) {
-                PersonalInfoScreen(onClick = { navController.navigate(Route.ACTIVITYANDGOAL) })
+                PersonalInfoScreen(
+                    onClickNext = { navController.navigate(Route.ACTIVITYANDGOAL) }
+                )
             }
             composable(route = Route.ACTIVITYANDGOAL) {
-                ActivityAndGoalScreen()
+                ActivityAndGoalScreen(
+                    onClickBack = { navController.navigateUp()},
+                    onClickNext = { navController.navigate(Route.NUTRIENTGOAL) }
+                )
             }
             composable(route = Route.NUTRIENTGOAL) {
                 NutrientGoalScreen()

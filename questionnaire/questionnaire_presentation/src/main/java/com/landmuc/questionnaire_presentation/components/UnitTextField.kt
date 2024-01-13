@@ -7,12 +7,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.landmuc.core_ui.LocalSpacing
 
@@ -21,20 +29,28 @@ fun UnitTextField(
     text: String,
     onValueChange: (String) -> Unit,
     unit: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    keyboardType: KeyboardType = KeyboardType.Text,
 ) {
-   val spacing = LocalSpacing.current
+    val spacing = LocalSpacing.current
+    val focusManager = LocalFocusManager.current
     Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.Center
+        modifier = modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Start
     ) {
+        Spacer(modifier = Modifier.weight(0.20f))
         OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
             textStyle = MaterialTheme.typography.displayLarge,
+            keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = ImeAction.Next),
+            keyboardActions = KeyboardActions(
+                onNext = { focusManager.moveFocus(FocusDirection.Down)}
+            ),
             singleLine = true,
             modifier = Modifier
-                .width(200.dp)
+                .weight(0.60f)
                 .alignBy(LastBaseline)
         )
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
@@ -42,6 +58,7 @@ fun UnitTextField(
             text = unit,
             style = MaterialTheme.typography.displayLarge,
             modifier = Modifier
+                .weight(0.20f)
                 .alignBy(LastBaseline)
             )
     }
