@@ -30,13 +30,14 @@ fun Navigation() {
         ) {
             composable(route = Route.PERSONALINFO) {
                 PersonalInfoScreen(
-                    onClickNext = { navController.navigate(Route.ACTIVITYANDGOAL) }
+                    onNextClick = { navController.navigate(Route.ACTIVITYANDGOAL) },
+                    scaffoldState = scaffoldState
                 )
             }
             composable(route = Route.ACTIVITYANDGOAL) {
                 ActivityAndGoalScreen(
-                    onClickBack = { navController.navigateUp()},
-                    onClickNext = { navController.navigate(Route.NUTRIENTGOAL) }
+                    onBackClick = { navController.navigateUp()},
+                    onNextClick = { navController.navigate(Route.NUTRIENTGOAL) }
                 )
             }
             composable(route = Route.NUTRIENTGOAL) {

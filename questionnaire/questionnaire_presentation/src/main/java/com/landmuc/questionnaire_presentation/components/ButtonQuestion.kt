@@ -21,6 +21,9 @@ fun ButtonQuestion(
     leftButtonOnClick: () -> Unit,
     middleButtonOnClick: () -> Unit,
     rightButtonOnClick: () -> Unit,
+    leftButtonIsSelected: Boolean,
+    middleButtonIsSelected: Boolean,
+    rightButtonIsSelected: Boolean,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
@@ -37,23 +40,23 @@ fun ButtonQuestion(
             SelectableButton(
                 text = leftButtonText,
                 onClick = leftButtonOnClick,
-                isSelected = false,
+                isSelected = leftButtonIsSelected,
                 color = MaterialTheme.colorScheme.primaryContainer,
-                selectedTextColor = Color.White
+                selectedTextColor = Color.Black
             )
             SelectableButton(
                 text = middleButtonText,
                 onClick = middleButtonOnClick,
-                isSelected = false,
+                isSelected = middleButtonIsSelected,
                 color = MaterialTheme.colorScheme.primaryContainer,
-                selectedTextColor = Color.White
+                selectedTextColor = Color.Black
             )
             SelectableButton(
                 text = rightButtonText,
                 onClick = rightButtonOnClick,
-                isSelected = false,
+                isSelected = rightButtonIsSelected,
                 color = MaterialTheme.colorScheme.primaryContainer,
-                selectedTextColor = Color.White
+                selectedTextColor = Color.Black
             )
         }
     }

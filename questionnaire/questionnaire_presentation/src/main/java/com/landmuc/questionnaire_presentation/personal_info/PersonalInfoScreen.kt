@@ -9,15 +9,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -26,16 +27,35 @@ import com.landmuc.core_ui.LocalSpacing
 import com.landmuc.questionnaire_presentation.components.TextQuestion
 import com.landmuc.core.R
 import com.landmuc.core.domain.model.Gender
+import com.landmuc.core.util.UiEvent
 import com.landmuc.questionnaire_presentation.components.ActionButton
 import com.landmuc.questionnaire_presentation.components.SelectableButton
 import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
 fun PersonalInfoScreen(
-    onClickNext: () -> Unit,
+    onNextClick: () -> Unit,
+    scaffoldState: ScaffoldState,
     viewModel: PersonalInfoViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
+    val context = LocalContext.current
+    //val listState = rememberLazyListState()
+    
+   LaunchedEffect(key1 = true) {
+       viewModel.uiEvent.collect{ event ->
+           when(event) {
+               is UiEvent.Success -> onNextClick()
+               is UiEvent.ShowSnackbar -> {
+                   scaffoldState.snackbarHostState.showSnackbar(
+                       event.message.asString(context)
+                   )
+               }
+               else -> Unit
+           }
+       }
+   }
+    
     Scaffold(
         topBar = {
             TopAppBar(
@@ -44,6 +64,7 @@ fun PersonalInfoScreen(
         }
     ) {
         LazyColumn(
+            //state = listState,
             contentPadding = it,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -112,7 +133,7 @@ fun PersonalInfoScreen(
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 ActionButton(
                     text = stringResource(id = R.string.next),
-                    onClick = onClickNext
+                    onClick = { viewModel.onNextClick() }
                 )
                 Spacer(modifier = Modifier.size(300.dp))
             }

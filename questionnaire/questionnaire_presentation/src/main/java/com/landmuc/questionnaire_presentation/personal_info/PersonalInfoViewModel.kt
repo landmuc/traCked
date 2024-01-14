@@ -78,6 +78,8 @@ class PersonalInfoViewModel @Inject constructor(
             preferences.saveHeight(height)
             preferences.saveWeight(weight)
             preferences.saveGender(gender)
+
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

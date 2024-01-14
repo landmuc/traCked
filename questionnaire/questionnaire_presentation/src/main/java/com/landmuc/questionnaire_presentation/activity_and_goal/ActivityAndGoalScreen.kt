@@ -8,22 +8,37 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.landmuc.core_ui.LocalSpacing
 import com.landmuc.questionnaire_presentation.components.ButtonQuestion
 import com.landmuc.core.R
+import com.landmuc.core.domain.model.ActivityLevel
+import com.landmuc.core.domain.model.GoalType
+import com.landmuc.core.util.UiEvent
 import com.landmuc.questionnaire_presentation.components.ActionButton
 import com.landmuc.questionnaire_presentation.components.TopAppBar
 
 @Composable
 fun ActivityAndGoalScreen(
-    onClickBack: () -> Unit,
-    onClickNext: () -> Unit,
-    modifier: Modifier = Modifier
+    onBackClick: () -> Unit,
+    onNextClick: () -> Unit,
+    viewModel: ActivityAndGoalViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
+
+    LaunchedEffect(key1 = true) {
+        viewModel.uiEvent.collect {event ->
+            when(event) {
+                is UiEvent.Success -> onNextClick()
+                else -> Unit
+            }
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -35,7 +50,7 @@ fun ActivityAndGoalScreen(
         LazyColumn(
             contentPadding = it,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = spacing.spaceMedium)
         ) {
@@ -45,9 +60,12 @@ fun ActivityAndGoalScreen(
                     leftButtonText = stringResource(id = R.string.high),
                     middleButtonText = stringResource(id = R.string.medium),
                     rightButtonText = stringResource(id = R.string.low),
-                    leftButtonOnClick = { /*TODO*/ },
-                    middleButtonOnClick = { /*TODO*/ },
-                    rightButtonOnClick = { /*TODO*/ }
+                    leftButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onActivityLevelSelect(ActivityLevel.High)) },
+                    middleButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onActivityLevelSelect(ActivityLevel.Medium)) },
+                    rightButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onActivityLevelSelect(ActivityLevel.Low))},
+                    leftButtonIsSelected = viewModel.activityAndGoalUiState.activityLevel is ActivityLevel.High,
+                    middleButtonIsSelected = viewModel.activityAndGoalUiState.activityLevel is ActivityLevel.Medium,
+                    rightButtonIsSelected = viewModel.activityAndGoalUiState.activityLevel is ActivityLevel.Low
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 ButtonQuestion(
@@ -55,19 +73,22 @@ fun ActivityAndGoalScreen(
                     leftButtonText = stringResource(id = R.string.gain),
                     middleButtonText = stringResource(id = R.string.keep),
                     rightButtonText = stringResource(id = R.string.lose),
-                    leftButtonOnClick = { /*TODO*/ },
-                    middleButtonOnClick = { /*TODO*/ },
-                    rightButtonOnClick = { /*TODO*/ }
+                    leftButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onGoalTypeSelect(GoalType.GainWeight)) },
+                    middleButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onGoalTypeSelect(GoalType.KeepWeight)) },
+                    rightButtonOnClick = { viewModel.onEvent(ActivityAndGoalEvent.onGoalTypeSelect(GoalType.LoseWeight))},
+                    leftButtonIsSelected = viewModel.activityAndGoalUiState.goalType is GoalType.GainWeight,
+                    middleButtonIsSelected = viewModel.activityAndGoalUiState.goalType is GoalType.KeepWeight,
+                    rightButtonIsSelected = viewModel.activityAndGoalUiState.goalType is GoalType.LoseWeight
                 )
                 Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 Row {
                     ActionButton(
                         text = stringResource(id = R.string.back),
-                        onClick = onClickBack
+                        onClick = onBackClick
                     )
                     ActionButton(
                         text = stringResource(id = R.string.next),
-                        onClick = onClickNext
+                        onClick = onNextClick
                     )
                 }
             }
