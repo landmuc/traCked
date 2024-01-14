@@ -52,21 +52,21 @@ class DefaultPreferences(
             .apply()
     }
 
-    override fun saveCarbsRatio(carbsRatio: Int) {
+    override fun saveCarbsRatio(carbsRatio: Float) {
         sharedPref.edit()
-            .putInt(Preferences.KEY_CARBS_RATIO, carbsRatio)
+            .putFloat(Preferences.KEY_CARBS_RATIO, carbsRatio)
             .apply()
     }
 
-    override fun saveProteinRatio(proteinRatio: Int) {
+    override fun saveProteinRatio(proteinRatio: Float) {
         sharedPref.edit()
-            .putInt(Preferences.KEY_PROTEIN_RATIO, proteinRatio)
+            .putFloat(Preferences.KEY_PROTEIN_RATIO, proteinRatio)
             .apply()
     }
 
-    override fun saveFatRatio(fatRatio: Int) {
+    override fun saveFatRatio(fatRatio: Float) {
         sharedPref.edit()
-            .putInt(Preferences.KEY_FAT_RATIO, fatRatio)
+            .putFloat(Preferences.KEY_FAT_RATIO, fatRatio)
             .apply()
     }
 
@@ -78,9 +78,9 @@ class DefaultPreferences(
         val genderString = sharedPref.getString(Preferences.KEY_GENDER, null)
         val activityLevelString = sharedPref.getString(Preferences.KEY_ACTIVITY_LEVEL, null)
         val goalTypeString = sharedPref.getString(Preferences.KEY_GOAL_TYPE, null)
-        val carbsRatio = sharedPref.getInt(Preferences.KEY_CARBS_RATIO, -1)
-        val proteinRatio = sharedPref.getInt(Preferences.KEY_PROTEIN_RATIO, -1)
-        val fatRatio = sharedPref.getInt(Preferences.KEY_FAT_RATIO, -1)
+        val carbsRatio = sharedPref.getFloat(Preferences.KEY_CARBS_RATIO, -1f)
+        val proteinRatio = sharedPref.getFloat(Preferences.KEY_PROTEIN_RATIO, -1f)
+        val fatRatio = sharedPref.getFloat(Preferences.KEY_FAT_RATIO, -1f)
 
         return UserInfo(
             name = name ?: "User",

@@ -88,7 +88,7 @@ fun ActivityAndGoalScreen(
                     )
                     ActionButton(
                         text = stringResource(id = R.string.next),
-                        onClick = onNextClick
+                        onClick = { viewModel.onNextCLick() }
                     )
                 }
             }

@@ -41,7 +41,11 @@ fun Navigation() {
                 )
             }
             composable(route = Route.NUTRIENTGOAL) {
-                NutrientGoalScreen()
+                NutrientGoalScreen(
+                    onBackClick = { navController.navigateUp()},
+                    onNextClick = {navController.navigate(Route.TRACKER)},
+                    scaffoldState = scaffoldState
+                )
             }
         }
     }

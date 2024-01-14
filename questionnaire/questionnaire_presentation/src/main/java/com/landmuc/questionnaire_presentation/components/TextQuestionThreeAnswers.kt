@@ -16,13 +16,15 @@ import com.landmuc.core_ui.LocalSpacing
 @Composable
 fun TextQuestionThreeAnswers(
     questionText: String,
-    leftInputText: String,
-    middleInputText: String,
-    rightInputText: String,
-    leftOnValueChange: (String) -> Unit,
-    middleOnValueChange: (String) -> Unit,
-    rightOnValueChange: (String) -> Unit,
-    unit: String,
+    firstInputText: String,
+    secondInputText: String,
+    thirdInputText: String,
+    firstOnValueChange: (String) -> Unit,
+    secondOnValueChange: (String) -> Unit,
+    thirdOnValueChange: (String) -> Unit,
+    firstUnit: String,
+    secondUnit: String,
+    thirdUnit: String,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
@@ -41,19 +43,19 @@ fun TextQuestionThreeAnswers(
             modifier = Modifier.fillMaxWidth()
         ) {
             UnitTextField(
-                text = leftInputText,
-                onValueChange = leftOnValueChange,
-                unit = unit
+                text = firstInputText,
+                onValueChange = firstOnValueChange,
+                unit = firstUnit
             )
             UnitTextField(
-                text = middleInputText,
-                onValueChange = middleOnValueChange,
-                unit = unit
+                text = secondInputText,
+                onValueChange = secondOnValueChange,
+                unit = secondUnit
             )
             UnitTextField(
-                text = rightInputText,
-                onValueChange = rightOnValueChange,
-                unit = unit
+                text = thirdInputText,
+                onValueChange = thirdOnValueChange,
+                unit = thirdUnit
             )
         }
     }
