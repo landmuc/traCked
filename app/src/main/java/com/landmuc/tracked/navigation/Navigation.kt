@@ -47,6 +47,7 @@ fun Navigation() {
                     scaffoldState = scaffoldState
                 )
             }
+            composable(route = Route.TRACKER) {}
         }
     }
 }

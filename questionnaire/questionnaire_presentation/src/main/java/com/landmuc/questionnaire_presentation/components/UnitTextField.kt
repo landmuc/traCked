@@ -39,7 +39,7 @@ fun UnitTextField(
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Start
     ) {
-        Spacer(modifier = Modifier.weight(0.20f))
+        Spacer(modifier = Modifier.weight(0.25f))
         OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
@@ -50,7 +50,7 @@ fun UnitTextField(
             ),
             singleLine = true,
             modifier = Modifier
-                .weight(0.60f)
+                .weight(0.50f)
                 .alignBy(LastBaseline)
         )
         Spacer(modifier = Modifier.width(spacing.spaceSmall))
@@ -58,7 +58,7 @@ fun UnitTextField(
             text = unit,
             style = MaterialTheme.typography.displayLarge,
             modifier = Modifier
-                .weight(0.20f)
+                .weight(0.25f)
                 .alignBy(LastBaseline)
             )
     }

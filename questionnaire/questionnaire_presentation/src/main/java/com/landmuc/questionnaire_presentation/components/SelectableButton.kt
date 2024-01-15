@@ -1,5 +1,6 @@
 package com.landmuc.questionnaire_presentation.components
 
+import android.icu.text.ListFormatter.Width
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.landmuc.core_ui.LocalSpacing
 
@@ -28,12 +30,13 @@ fun SelectableButton(
     color: Color,
     selectedTextColor: Color,
     modifier: Modifier = Modifier,
-    textStyle: TextStyle = MaterialTheme.typography.displayLarge
+    textStyle: TextStyle = MaterialTheme.typography.displayLarge,
+    width: Dp = 150.dp
 ) {
     val spacing = LocalSpacing.current
     Box(
         modifier = modifier
-            .width(150.dp)
+            .width(width)
             .clickable { onClick() }
             .clip(RoundedCornerShape(100.dp))
             .border(

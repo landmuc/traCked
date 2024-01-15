@@ -40,8 +40,7 @@ fun PersonalInfoScreen(
 ) {
     val spacing = LocalSpacing.current
     val context = LocalContext.current
-    //val listState = rememberLazyListState()
-    
+
    LaunchedEffect(key1 = true) {
        viewModel.uiEvent.collect{ event ->
            when(event) {
@@ -64,7 +63,6 @@ fun PersonalInfoScreen(
         }
     ) {
         LazyColumn(
-            //state = listState,
             contentPadding = it,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier

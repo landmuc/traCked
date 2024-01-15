@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -86,6 +87,7 @@ fun ActivityAndGoalScreen(
                         text = stringResource(id = R.string.back),
                         onClick = onBackClick
                     )
+                    Spacer(modifier = Modifier.width(spacing.spaceMedium))
                     ActionButton(
                         text = stringResource(id = R.string.next),
                         onClick = { viewModel.onNextCLick() }

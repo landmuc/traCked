@@ -47,11 +47,13 @@ fun TextQuestionThreeAnswers(
                 onValueChange = firstOnValueChange,
                 unit = firstUnit
             )
+            Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
                 text = secondInputText,
                 onValueChange = secondOnValueChange,
                 unit = secondUnit
             )
+            Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
                 text = thirdInputText,
                 onValueChange = thirdOnValueChange,
