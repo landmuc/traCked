@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.landmuc.questionnaire_presentation.activity_and_goal.ActivityAndGoalScreen
 import com.landmuc.questionnaire_presentation.nutrient_goal.NutrientGoalScreen
 import com.landmuc.questionnaire_presentation.personal_info.PersonalInfoScreen
+import com.landmuc.tracker_presentation.tracker_overview.TrackerOverviewScreen
 
 @Composable
 fun Navigation() {
@@ -47,7 +48,9 @@ fun Navigation() {
                     scaffoldState = scaffoldState
                 )
             }
-            composable(route = Route.TRACKER) {}
+            composable(route = Route.TRACKER) {
+                TrackerOverviewScreen()
+            }
         }
     }
 }
