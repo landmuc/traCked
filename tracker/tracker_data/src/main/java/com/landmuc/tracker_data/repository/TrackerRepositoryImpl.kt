@@ -29,6 +29,8 @@ class TrackerRepositoryImpl(
             )
             Result.success(
                 searchDto.products
+                    // filter products within a certain range of estimated calories
+                    // some products have presumably wrong calories attached
                     .filter {
                         val calculatedCalories =
                             it.nutriments.carbohydrates100g * 4f +

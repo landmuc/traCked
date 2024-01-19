@@ -2,7 +2,6 @@ package com.landmuc.tracker_data.mapper
 
 import com.landmuc.tracker_data.local.entity.TrackedFoodEntity
 import com.landmuc.tracker_domain.model.MealType
-import com.landmuc.tracker_domain.model.TrackableFood
 import com.landmuc.tracker_domain.model.TrackedFood
 import java.time.LocalDate
 
