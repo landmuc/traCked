@@ -10,13 +10,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.landmuc.core.domain.preferences.Preferences
 import com.landmuc.questionnaire_presentation.activity_and_goal.ActivityAndGoalScreen
 import com.landmuc.questionnaire_presentation.nutrient_goal.NutrientGoalScreen
 import com.landmuc.questionnaire_presentation.personal_info.PersonalInfoScreen
 import com.landmuc.tracker_presentation.tracker_overview.TrackerOverviewScreen
-
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 @Composable
-fun Navigation() {
+fun Navigation(
+   shouldShowQuestionnaire: Boolean
+) {
+
     val navController: NavHostController = rememberNavController()
     val scaffoldState = rememberScaffoldState()
 
@@ -26,7 +31,7 @@ fun Navigation() {
     ) {
         NavHost(
             navController = navController,
-            startDestination = Route.PERSONALINFO,
+            startDestination = if (!shouldShowQuestionnaire) Route.TRACKER else Route.PERSONALINFO,
             modifier = Modifier.padding(it)
         ) {
             composable(route = Route.PERSONALINFO) {
