@@ -49,8 +49,19 @@ fun Navigation() {
                 )
             }
             composable(route = Route.TRACKER) {
-                TrackerOverviewScreen()
+                TrackerOverviewScreen(
+                    onNavigateToSearch = { mealName, day, month, year ->
+                        navController.navigate(
+                           Route.SEARCH
+                            +"/$mealName"
+                            +"/$day"
+                            +"/$month"
+                            +"/$year"
+                        )
+                    }
+                )
             }
+            composable(route = Route.SEARCH) {}
         }
     }
 }

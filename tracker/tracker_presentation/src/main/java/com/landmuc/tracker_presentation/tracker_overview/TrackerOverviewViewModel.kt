@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TrackerOverviewViewModel @Inject constructor(
-    private val preferences: Preferences,
+    preferences: Preferences,
     private val trackerUseCases: TrackerUseCases
 ): ViewModel() {
     var trackerOverviewState by mutableStateOf(TrackerOverviewState())
