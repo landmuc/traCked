@@ -9,6 +9,8 @@ import com.landmuc.core.domain.preferences.Preferences
 import com.landmuc.core.util.UiEvent
 import com.landmuc.core.util.UiText
 import com.landmuc.core.R
+import com.landmuc.core.domain.use_case.FilterOutDigits
+import com.landmuc.core.domain.use_case.FilterOutDigitsAndDots
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -17,7 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PersonalInfoViewModel @Inject constructor(
-    private val preferences: Preferences
+    private val preferences: Preferences,
+    private val filterOutDigits: FilterOutDigits,
+    private val filterOutDigitsAndDots: FilterOutDigitsAndDots
 ): ViewModel() {
     var personalInfoUiState by mutableStateOf(PersonalInfoUiState())
         private set
@@ -31,13 +35,19 @@ class PersonalInfoViewModel @Inject constructor(
                 personalInfoUiState = personalInfoUiState.copy(name = event.name)
             }
             is PersonalInfoEvent.OnAgeEnter -> {
-                personalInfoUiState = personalInfoUiState.copy(age = event.age)
+                if (event.age.length <= 3) {
+                    personalInfoUiState = personalInfoUiState.copy(age = filterOutDigits(event.age))
+                }
             }
             is PersonalInfoEvent.OnHeightEnter -> {
-                personalInfoUiState = personalInfoUiState.copy(height = event.height)
+                if (event.height.length <= 3) {
+                    personalInfoUiState = personalInfoUiState.copy(height = filterOutDigits(event.height))
+                }
             }
             is PersonalInfoEvent.OnWeightEnter -> {
-                personalInfoUiState = personalInfoUiState.copy(weight = event.weight)
+                if (event.weight.length <= 5) {
+                    personalInfoUiState = personalInfoUiState.copy(weight = filterOutDigitsAndDots(event.weight))
+                }
             }
             is PersonalInfoEvent.OnGenderSelect -> {
                 personalInfoUiState = personalInfoUiState.copy(gender = event.gender)

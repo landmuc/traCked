@@ -19,8 +19,8 @@ interface Preferences {
 
     fun loadUserInfo(): UserInfo
 
-    fun saveShouldShowOnboarding(shouldShow: Boolean)
-    fun loadShouldShowOnboarding(): Boolean
+    fun saveShouldShowQuestionnaire(shouldShow: Boolean)
+    fun loadShouldShowQuestionnaire(): Boolean
 
     companion object {
         const val KEY_NAME = "name"

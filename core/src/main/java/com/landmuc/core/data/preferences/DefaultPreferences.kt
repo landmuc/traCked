@@ -96,13 +96,13 @@ class DefaultPreferences(
         )
     }
 
-    override fun saveShouldShowOnboarding(shouldShow: Boolean) {
+    override fun saveShouldShowQuestionnaire(shouldShow: Boolean) {
         sharedPref.edit()
             .putBoolean(Preferences.KEY_SHOULD_SHOW_QUESTIONNAIRE, shouldShow)
             .apply()
     }
 
-    override fun loadShouldShowOnboarding(): Boolean {
+    override fun loadShouldShowQuestionnaire(): Boolean {
         return sharedPref.getBoolean(Preferences.KEY_SHOULD_SHOW_QUESTIONNAIRE, true)
     }
 
