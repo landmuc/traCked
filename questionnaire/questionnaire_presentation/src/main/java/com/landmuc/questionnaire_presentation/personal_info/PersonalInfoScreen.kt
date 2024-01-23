@@ -133,7 +133,7 @@ fun PersonalInfoScreen(
                     text = stringResource(id = R.string.next),
                     onClick = { viewModel.onNextClick() }
                 )
-                Spacer(modifier = Modifier.size(300.dp))
+                Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
             }
         }
     }

@@ -23,11 +23,13 @@ class TrackerOverviewViewModel @Inject constructor(
     preferences: Preferences,
     private val trackerUseCases: TrackerUseCases
 ): ViewModel() {
+
+    val name = preferences.loadUserInfo().name
     var trackerOverviewState by mutableStateOf(TrackerOverviewState())
         private set
 
-    private val _uiEvent = Channel<UiEvent>()
-    val uiEvent = _uiEvent.receiveAsFlow()
+    //private val _uiEvent = Channel<UiEvent>()
+    //val uiEvent = _uiEvent.receiveAsFlow()
 
     private var getFoodsForDateJob: Job? = null
 

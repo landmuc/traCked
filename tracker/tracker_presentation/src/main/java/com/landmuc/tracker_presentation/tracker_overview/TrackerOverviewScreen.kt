@@ -36,7 +36,7 @@ fun TrackerOverviewScreen(
             .padding(bottom = spacing.spaceMedium)
     ) {
         item {
-            NutrientsHeader(state = state)
+            NutrientsHeader(state = state, name = viewModel.name)
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             DaySelector(
                 date = state.date,
@@ -76,7 +76,6 @@ fun TrackerOverviewScreen(
                                     state.date.dayOfMonth,
                                     state.date.monthValue,
                                     state.date.year
-
                                 )
                             },
                             modifier = Modifier.fillMaxWidth()

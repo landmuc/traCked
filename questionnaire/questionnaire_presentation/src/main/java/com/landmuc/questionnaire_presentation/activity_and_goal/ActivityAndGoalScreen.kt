@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
@@ -51,11 +50,10 @@ fun ActivityAndGoalScreen(
         LazyColumn(
             contentPadding = it,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = spacing.spaceMedium)
+            modifier = Modifier.fillMaxSize()
         ) {
             item {
+                Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
                 ButtonQuestion(
                     questionText = stringResource(id = R.string.whats_your_activity_level),
                     leftButtonText = stringResource(id = R.string.high),
@@ -87,12 +85,13 @@ fun ActivityAndGoalScreen(
                         text = stringResource(id = R.string.back),
                         onClick = onBackClick
                     )
-                    Spacer(modifier = Modifier.width(spacing.spaceMedium))
+                    Spacer(modifier = Modifier.width(spacing.spaceLarge))
                     ActionButton(
                         text = stringResource(id = R.string.next),
                         onClick = { viewModel.onNextCLick() }
                     )
                 }
+                Spacer(modifier = Modifier.height(spacing.spaceExtraLarge))
             }
         }
     }

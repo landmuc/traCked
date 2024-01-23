@@ -31,6 +31,7 @@ import com.landmuc.tracker_presentation.tracker_overview.TrackerOverviewState
 @Composable
 fun NutrientsHeader(
     state: TrackerOverviewState,
+    name: String,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
@@ -53,6 +54,11 @@ fun NutrientsHeader(
                 vertical = spacing.spaceExtraLarge
             )
     ) {
+        Text(
+            text = stringResource(id = R.string.hello_name, name),
+            style = MaterialTheme.typography.headlineMedium,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
