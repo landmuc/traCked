@@ -11,7 +11,7 @@ import kotlin.math.roundToInt
 
 /***
  * calculates the total amount of nutrients (carbs, protein, fat, calories)
- * a user has (already) eaten and
+ * a user has eaten and
  * shows the amount of nutrients a user should eat in a day for comparison.
  * The daily nutrient goal amounts depend on the information entered
  * in the questionnaire module
