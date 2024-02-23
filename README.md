@@ -25,8 +25,8 @@ You can search meals you ate / are going to eat through the https://world.openfo
 
 ## Screenshots
 
-<img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN1.png" width="200"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN2.png" width="200"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN3.png" width="200"/>
+<img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN1.png" width="180"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN2.png" width="180"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_QN3.png" width="180"/>
 
-<img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_Tracker.png" width="200"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_Search.png" width="200"/>
+<img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_Tracker.png" width="180"/>  <img alt="Screenshot_QN1.png" height="400" src="Screenshots/Screenshot_Search.png" width="180"/>
 
 
