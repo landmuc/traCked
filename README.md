@@ -15,7 +15,7 @@ You can search meals you ate / are going to eat through the https://world.openfo
 - **Jetpack Compose**
 - **Multi-Modular Structure**
 - **MVI Architecture**
-- **Flow**
+- **Coroutines & Flow**
 - **Retrofit**
 - **Room**
 - **Dagger Hilt**
